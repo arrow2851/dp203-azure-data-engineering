@@ -16,6 +16,12 @@
     - Hot: frequently access data
     - Cool: infrequently access data
     - archive: not availavble at storage account level, available at indivudual blob level
+
+|| Hot tier | Cool tier | Cold tier | Archive tier |
+|----------|----------|-----------|-----------|--------------|
+ | Minimum recommended data retention period | N/A          | 30 days     | 90 days     | 180 days                   |
+| Latency   (Time to first byte)            | Milliseconds | Milliseconds | Milliseconds | Hours2                     |
+| Supported redundancy configurations       | All          | All          | All          | LRS, GRS, and RA-GRS3 only |
 - storage account -> Lifecycle management
 
 
