@@ -374,10 +374,28 @@ ALTER TABLE [logdata] SWITCH PARTITION 2 TO [logdata_new] PARTITION 1;
 
 
 ##### 4.12 Indexes
-- Clusterd Columnstore Indexes
+- **Clusterd Columnstore Indexes**
+  	- When no index options are specified on a table
+  	- Offer both the highest level of data compression and the best overall query performance
+  	- Will generally outperform clustered index or heap tables and are usually the best choice for large tables
+  	- Clustered columnstore is the best place to start when you are unsure of how to index your table
+  	- Cluster columnstore tables begin to achieve optimal compression once there is more than 60 million rows
+ 	 -  Anti patterns:
+  	- a) Columnstore tables do not support varchar(max), nvarchar(max), and varbinary(max). Consider heap or clustered index instead.
+  	- b) Columnstore tables may be less efficient for transient data. Consider heap and perhaps even temporary tables.
+  	- c) Small tables with less than 60 million rows. Consider heap tables.
+		 
 - Heap tables
+	-  For small lookup tables, less than 60 million rows, consider using HEAP or clustered index for faster query performance
+ 	-  When you are temporarily landing data in dedicated SQL pool, you may find that using a heap table makes the overall process faster 
 - Clustered Indexes
+	- Clustered indexes may outperform clustered columnstore tables when a single row needs to be quickly retrieved
+ 	- For queries where a single or very few row lookup is required to perform with extreme speed, consider a clustered index or nonclustered secondary index
+  - Disadvantage to using a clustered index is that only queries that benefit are the ones that use a highly selective filter on the clustered index column. Use non-clustered index for other columns
 - NonClustered Indexes
+	- For queries where a single or very few row lookup is required to perform with extreme speed, consider a clustered index or nonclustered secondary index
+ 	- To improve filter on other columns, a nonclustered index can be added to other columns.
+  	- However, each index that is added to a table adds both space and processing time to loads.
 
 
 ### 5. Design and Develop Data Processing - Azure Data Factory
