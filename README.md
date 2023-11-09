@@ -40,6 +40,7 @@
     - apache spark pool
 
 ##### 4.2 External tables & Serverless SQL pool / Dedicated SQL pool
+- when to use hadoop with external tables - https://learn.microsoft.com/en-us/azure/synapse-analytics/sql/develop-tables-external-tables?tabs=hadoop
 - steps to create and use external table
     - create a database in synabse workspace
     - create a database master key with encryption by password. this will be used to protect Shared Access Signature
