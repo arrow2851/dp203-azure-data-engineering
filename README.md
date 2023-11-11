@@ -321,6 +321,14 @@ CREATE TABLE [dbo].[DimProduct](
 
 
 ##### 4.9 Slowly changing dimensions
+|                  SCD Type                                   |                                Summary                                                         |
+|-------------------------------------------------------------|------------------------------------------------------------------------------------------------|
+|                                Type 0                       |                                Ignore any changes and audit the changes.                       |
+|                                Type 1                       |                                Overwrite the changes                                           |
+|                                Type 2                       |                                History will be added as a new row.                             |
+|                                Type 3                       |                                History will be added as a new column.                          |
+|                                Type 4                       |                                A new dimension will be added                                   |
+|                                Type 6                       |                                Combination of Type 2 and Type 3                                |
 - type-1 SCD: updates the OLD value with the NEW value in the data warehouse
 - type-2 SCD: keeps both OLD and NEW values (start_date and end_date and is_active)
 - type-3 SCD: instead of having multiple rows, additional columns are added to signify the change
