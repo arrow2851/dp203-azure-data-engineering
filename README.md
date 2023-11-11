@@ -49,6 +49,7 @@
     - create external file format object that defines the external data (file format = DELIMITEDTEXT or PARQUET)
     - define the external table
     - use the table for analysis (there will be a lag, as data is stored in external source)
+    - Note - when referencing filepaths : Folder or file that starts with . or _ will be ignored -> Reference documentation: https://learn.microsoft.com/en-us/sql/t-sql/statements/create-external-table-transact-sql?view=azure-sqldw-latest&tabs=dedicated#location--folder_or_filepath-1
 
     ```sql
     CREATE DATABASE SCOPED CREDENTIAL AzureStorageCredential
