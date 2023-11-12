@@ -646,6 +646,16 @@ display(newdf)
     - For the key vault, you have to ensure that **Soft delete** is enabled and the setting of **Do Not Purge** is also enabled.
     - Also grant Azure Data Factory the key permissions of 'Get', 'Unwrap Key' and 'Wrap Key'
 
+- **Levels of permission**
+
+
+The permissions on directories and files in a container, are Read, Write, and Execute, and they can be used on files and directories as shown in the following table:
+|		|File 										|Directory|
+|---------------|-------------------------------------------------------------------------------|----------------------------------------------------------|
+|Read (R)	|Can read the contents of a file 					|Requires Read and Execute to list the contents of the directory|
+|Write (W) 	|Can write or append to a file 						|Requires Write and Execute to create child items in a directory|
+|Execute (X) 	|Does not mean anything in the context of Data Lake Storage Gen2 	|Required to traverse the child items of a directory|
+
 - **Azure Synapse - Data Masking**
     - Here the data in the table can be limited in its exposure to non-privileged users.
     - You can create a rule that can mask the data. 
