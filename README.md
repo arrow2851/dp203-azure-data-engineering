@@ -461,6 +461,12 @@ ALTER TABLE [logdata] SWITCH PARTITION 2 TO [logdata_new] PARTITION 1;
 - throughput: controls the throughput capacity of event hubs
 - receivers: entity taht reads event data
 
+- Different types of windows
+  - Tumbling window -> Window is fixed time. Eg: Events occuring in 5 second intervals 0-5, 5-10, 10-15.. etc
+  - Hopping window -> Window is fixed time but window length is not the neccesarily same as interval length. Eg: Events occuring every 7 seconds with 3 second interval length 0-3, 7-10, 14-17, 21-24..etc
+  - Sliding window -> Window is fixed length in but is checked only when the next event occurs. Usually has a count to have a certain number of events in that window
+  - Session window -> Window begins when a new event starts. Continues as long as events keep occuring before the session times out. If the session times out, the next session window will begin when a new event occurs.
+
 
 
 ### 7. Spark Pool
